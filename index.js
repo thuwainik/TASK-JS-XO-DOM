@@ -42,10 +42,12 @@ function clickButton(index) {
   // Your main code here.
   if (counter % 2 == 0) {
     fillButton(index, "X");
+    document.getElementById(index).style.color = "green";
     arr[index - 1] = "X";
     counter++;
   } else {
     fillButton(index, "O");
+    document.getElementById(index).style.color = "red";
     arr[index - 1] = "O";
     counter++;
   }
