@@ -11,6 +11,7 @@ function winningAlert(winner) {
   if (confirm(`Horraaay, ${winner} wins!`)) {
     // The code here will be exectued if you press on OK button that will pop on the window
   }
+  winner == "X" ? (player = true) : (player = false);
 }
 
 // SAMPLE CODE: This code fills the 1st and 9th button with X and O initially
