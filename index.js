@@ -35,18 +35,18 @@ let winner = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-let counter = 0;
+let player = true;
 function clickButton(index) {
   console.log(`Button number ${index} is clicked`);
   // Your main code here.
-  if (counter % 2 == 0) {
+  if (player) {
     fillButton(index, "X");
     document.getElementById(index).style.color = "green";
-    counter++;
+    player = false;
   } else {
     fillButton(index, "O");
     document.getElementById(index).style.color = "red";
-    counter++;
+    player = true;
   }
 
   checkWinner(index);
@@ -70,7 +70,6 @@ function checkWinner(index) {
   console.log(xoHist);
 }
 function restartGame() {
-  counter = 0;
   for (index = 1; index <= 9; index++) {
     document.getElementById(index).innerHTML = "";
     document.getElementById(index).disabled = false;
