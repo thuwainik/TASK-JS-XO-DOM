@@ -3,7 +3,7 @@
 // First button top left is called 1, last button bottom right is 9
 function fillButton(index, text) {
   // This function fills the button of the send index
-  document.getElementById(index).innerHTML = text;
+  document.getElementById(index).innerText = text;
   document.getElementById(index).disabled = true;
 }
 // pre-made a function. You can use this function to present an alert to say someone wins
@@ -16,8 +16,6 @@ function winningAlert(winner) {
 
 // SAMPLE CODE: This code fills the 1st and 9th button with X and O initially
 // ❗️ Delete this code once you are done testing
-// fillButton(1, "X");
-// fillButton(9, "O");
 
 /**
  *
@@ -49,7 +47,6 @@ function clickButton(index) {
     document.getElementById(index).style.color = "red";
     player = true;
   }
-
   checkWinner(index);
 }
 
@@ -65,14 +62,14 @@ function checkWinner(index) {
     winningAlert(document.getElementById(index).innerText);
     restartGame();
   } else if (xoHist.filter((s) => s.length == 3).length == 8) {
-    alert("It is A DRAW!!!!!");
+    alert("It is a DRAW!!!!!");
     restartGame();
   }
   console.log(xoHist);
 }
 function restartGame() {
   for (index = 1; index <= 9; index++) {
-    document.getElementById(index).innerHTML = "";
+    document.getElementById(index).innerText = "";
     document.getElementById(index).disabled = false;
   }
 }
