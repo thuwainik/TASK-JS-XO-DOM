@@ -35,7 +35,6 @@ let winner = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-let arr = ["", "", "", "", "", "", "", "", ""];
 let counter = 0;
 function clickButton(index) {
   console.log(`Button number ${index} is clicked`);
@@ -43,12 +42,10 @@ function clickButton(index) {
   if (counter % 2 == 0) {
     fillButton(index, "X");
     document.getElementById(index).style.color = "green";
-    arr[index - 1] = "X";
     counter++;
   } else {
     fillButton(index, "O");
     document.getElementById(index).style.color = "red";
-    arr[index - 1] = "O";
     counter++;
   }
 
@@ -58,18 +55,21 @@ function clickButton(index) {
 /**
  * (Optional) It's always a good idea to make a function for every single purpose.
  */
+let xoHist = [];
 function checkWinner(index) {
-  let cc = winner.map((ws) => ws.reduce((i, j) => i + arr[j], ""));
-  if (cc.includes("XXX") || cc.includes("OOO")) {
+  xoHist = winner.map((ws) =>
+    ws.reduce((i, j) => i + document.getElementById(j + 1).innerText, "")
+  );
+  if (xoHist.includes("XXX") || xoHist.includes("OOO")) {
     winningAlert(document.getElementById(index).innerText);
     restartGame();
-  } else if (cc.filter((s) => s.length == 3).length == 8) {
+  } else if (xoHist.filter((s) => s.length == 3).length == 8) {
     alert("It is A DRAW!!!!!");
     restartGame();
   }
+  console.log(xoHist);
 }
 function restartGame() {
-  arr = ["", "", "", "", "", "", "", "", ""];
   counter = 0;
   for (index = 1; index <= 9; index++) {
     document.getElementById(index).innerHTML = "";
